@@ -1,7 +1,10 @@
 #include<iostream>
 #include<cstring>
+#include<array>
 
 using namespace std;
+const int seasons =4;
+const array<string,seasons>Snames{"Spring","Summer","Fall","Winter"};//const array对象，该对象包含4个string对象
 int main()
 {
     system("chcp 65001");
@@ -33,6 +36,7 @@ int main()
 
     //string
     string str1;
+    string str_multi[3];//string数组
     string str2 {"hello"};
     cin>>str1;//自动处理长度 string对象可互相赋值，使用+号可以拼接
     str2=str1;
@@ -40,8 +44,16 @@ int main()
     cout<<str3<<endl;
     getline(cin,str3);
 
-    cout<<R"(hello "king" hello /n)"<<'/n';//原始字符串，"()"定界
+    //array固定长度数组
+    array<int,5>a1;
+    array<double,3>a2{22,55,222};
+    array<double,3>a3;
+    a3=a2;
+    a2.at(1)=2.5;
+    
+    cout<<R"(hello "king" hello /n)"<<endl;//原始字符串，"()"定界
 
+    cout<<Snames[2]<<endl;
 
     system("pause");
     return 0;
