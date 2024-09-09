@@ -2,4 +2,5 @@ break : switch跳出，循环跳出，内层循环跳出。
 continue : 循环语句中，跳过本次循环剩下语句，执行下一次循环。
 string ：
 union 共用体
+new 返回该数据类型的指针
 多文件编译 g++ -o multi.exe multi.cpp swap.cp
