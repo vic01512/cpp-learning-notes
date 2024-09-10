@@ -7,7 +7,7 @@ using namespace std;
 class Person
 {
 private:
-    int Password;
+    int Password;//成员属性私有，控制读写权限，写时验证数据有效性
 protected:
     int car_number;
 public:

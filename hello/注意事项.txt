@@ -5,4 +5,5 @@ union 共用体
 new 返回该数据类型的指针
 函数模板
 struct和class区别为默认访问权限不同
+头文件包括：函数原型。使用#define或const定义的符号常量。结构声明。类声明。模板声明。内联函数。
 多文件编译 g++ -o multi.exe multi.cpp swap.cp
