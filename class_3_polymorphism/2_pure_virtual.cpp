@@ -12,9 +12,9 @@ public:
     virtual void func()=0;//纯虚函数
 };
 
-class Anew{
+class Anew:public Base{
     public:
     void func(){
         cout<<"hello"<<endl;
     }
-}
+};
