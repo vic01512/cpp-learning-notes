@@ -1,17 +1,65 @@
-# STRING
+# vector
 
-C++ 风格的字符串 是一个类  
-string内部封装了char*，管理这个字符串，是一个char*类的容器  
++ 和数组类似，可动态扩展  
++ 动态扩展时并非原空间之后接新空间，而是找更大的内存空间，进行拷贝  
++ 前端封闭，尾部通过`push_back()  pop_back()`插入删除数据  
+第一个元素`front()`,最后一个`back()`  
++ 迭代器：`read()第一个元素前一个位置 begin()第一个元素 rbegin()最后一个元素位置 end()超出结尾`  支持随机访问   
 
-## 9种构造函数
+## 构造
+```
+vector<T> v; //采用模板实现类实现，默认构造函数
+vector(v.begin(), v.end()); //将v[begin(), end())区间中的元素拷贝给本身。 前闭后开注意
+vector(n, elem); //构造函数将n个elem拷贝给本身。
+vector(const vector &vec); //拷贝构造函数。
+```   
+还可以像数组一样初始化  
 
-构造函数原型  
-1 `string();`空字符串  
-2 `string(const char* s); `通过字符串s初始化  
-3 `string(const string& s);`通过一个string对象初始化另外一个string对象  
-4 `string(int n,char a);`使用n个a字符初始化  
-5 `string(const char* s，size_type n) `指向s的前n个字符  
-6 `string(iter begin,iter end)` iter为模板类型 初始化为[begin,end)字符串  
-7 `string(const string& s，string size_type pos, size_type n)` 对象s位置pos开始到结尾的字符，或从pos开始的n个字符  
-8 `string(string&& str)noexcept` 将一个string对象初始化为string对象str，并可能修改str   
-9 `string(initializer_list<char> il)` 初始化为列表中的li  
+## 赋值
+
+等号赋值
+```
+vector& operator=(const vector &vec);//重载等号操作符
+assign(beg, end); //将[beg, end)区间中的数据拷贝赋值给本身。
+assign(n, elem); //将n个elem拷贝赋值给本身。
+```  
+
+## 容量和大小
+
+
++ empty(); //判断容器是否为空
+
++ capacity(); //容器的容量
+
++ size(); //返回容器中元素的个数
+
++ resize(int num); //重新指定容器的长度为num，若容器变长，则以默认值填充新位置。如果容器变短，则末尾超出容器长度的元素被删除。 **容量不变**
+
++ resize(int num, elem); //重新指定容器的长度为num，若容器变长，则以elem值填充新位置。如果容器变短，则末尾超出容器长度的元素被删除
+
+
+## 插入和删除
+
++ `push_back(ele);` //尾部插入元素ele
++ `pop_back(); `//删除最后一个元素
++ `insert(const_iterator pos, ele);` //迭代器指向位置pos插入元素ele
++ `insert(const_iterator pos, int count,ele);`//迭代器指向位置pos插入count个元素ele
++ `erase(const_iterator pos);` //删除迭代器指向的元素
++ `erase(const_iterator start, const_iterator end);`//删除迭代器从start到end之间的元素
++ `clear();` //删除容器中所有元素  
+注意插入删除要用迭代器   
+
+## 数据存取
+
++ `at(int idx);` //返回索引idx所指的数据  
++ `operator[];` //返回索引idx所指的数据  
++ `front(); `//返回容器中第一个数据元素  
++ `back(); `//返回容器中最后一个数据元素  
+
+## 互换容器
+
+`swap(vec);` // 将vec与本身的元素互换  
+`vector<int>(v1).swap(v1);`  
++ `vector<int>(v1)`匿名对象 拷贝构造函数创建新对象 按v1来初始化这个匿名对象
++ `swap(v1)` 容器交换
++ 系统销毁匿名对象
