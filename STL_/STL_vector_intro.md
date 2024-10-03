@@ -49,6 +49,13 @@ assign(n, elem); //将n个elem拷贝赋值给本身。
 + `clear();` //删除容器中所有元素  
 注意插入删除要用迭代器   
 
+c++11中可以使用`emplace_back()`;允许开发者传递构造函数所需的参数，而这些参数将被用来在容器内部直接构造对象。  
+```
+std::vector<MyClass> vec;
+vec.emplace_back(arg1, arg2, arg3); // 直接在容器末尾构造对象
+```
+这种方式避免了首先创建一个临时MyClass对象，然后再将其复制或移动到vector中的步骤  
+
 ## 数据存取
 
 + `at(int idx);` //返回索引idx所指的数据  
@@ -60,6 +67,11 @@ assign(n, elem); //将n个elem拷贝赋值给本身。
 
 `swap(vec);` // 将vec与本身的元素互换  
 `vector<int>(v1).swap(v1);`  
-+ `vector<int>(v1)`匿名对象 拷贝构造函数创建新对象 按v1来初始化这个匿名对象
-+ `swap(v1)` 容器交换
-+ 系统销毁匿名对象
++ `vector<int>(v1)`匿名对象 拷贝构造函数创建新对象 按v1来初始化这个匿名对象   
++ `swap(v1)` 容器交换   
++ 系统销毁匿名对象   
+
+## 预留空间
+
+减少vector在动态扩展容量时的扩展次数   
+`reserve(int len);`//容器预留len个元素长度，预留位置不初始化，元素不可访问。  

@@ -19,11 +19,11 @@
 using namespace std;
 
 void test1(){
-    char all[]{"this is my house! from wade"}
+    char all[]{"this is my house! from wade"};
     string s1;  // 1
     string s2("hello world!");// 2
     string s3(s2);// 3
-    string s4(10,a);// 4
+    string s4(10,'a');// 4
     string s5(all,8);// 5
     string s6(all+2,all+10);// 6  all不能是对象，因为不同于数组名会看作为地址，s6不是指针，s6+6没有意义
                             //    而s6[1]是一个char值，&s6[5]是一个地址 可作为参数
